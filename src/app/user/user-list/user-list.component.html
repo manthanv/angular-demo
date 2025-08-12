@@ -1,0 +1,60 @@
+<div class="user-list-container">
+    <h1 class="user-list-container__header">User List</h1>
+    <h3 *ngIf="isLoading" class="user-list-container__header"><b>Fetching Details....</b></h3>
+    <ng-container *ngIf="!isLoading">
+        <div class="user-list-table-container">
+            <form [formGroup]="userListTableForm">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Name</th>
+                            <th>Language</th>
+                            <th>Bio</th>
+                            <th>Version</th>
+                        </tr>
+                    </thead>
+                    <tbody formArrayName="rows">
+                        <tr *ngFor="let row of rows.controls; let i = index" [formGroupName]="i">
+                            <td class="id-cell" (click)="onNavigateView(i)">
+                                {{ row.get('id')?.value }}
+                            </td>
+                            <td>
+                                <span *ngIf=" !isEditingCell(i, 'name' )" (click)="onCellClick(i, 'name')">
+                                    {{ row.get('name')?.value }} <i class="edit-icon">✎</i>
+                                </span>
+                                <input appAutoFocus class="cell-input" *ngIf="isEditingCell(i, 'name')"
+                                    formControlName="name" type="text" (blur)="onInputBlur()" />
+                            </td>
+                            <td>
+                                <span *ngIf="!isEditingCell(i, 'language')" (click)="onCellClick(i, 'language')">
+                                    {{ row.get('language')?.value }}
+                                    <i class="edit-icon">✎</i>
+                                </span>
+                                <input appAutoFocus class="cell-input" *ngIf="isEditingCell(i, 'language')"
+                                    formControlName="language" type="text" (blur)="onInputBlur()" />
+                            </td>
+                            <td>
+                                <span *ngIf="!isEditingCell(i, 'bio')" (click)="onCellClick(i, 'bio')">
+                                    {{ row.get('bio')?.value }}
+                                    <i class="edit-icon">✎</i>
+                                </span>
+                                <input appAutoFocus class="cell-input" *ngIf="isEditingCell(i, 'bio')"
+                                    formControlName="bio" type="text" (blur)="onInputBlur()" />
+                            </td>
+                            <td>
+                                <span *ngIf="!isEditingCell(i, 'version')" (click)="onCellClick(i, 'version')">
+                                    {{ row.get('version')?.value }}
+                                    <i class="edit-icon">✎</i>
+                                </span>
+                                <input appAutoFocus class="cell-input" *ngIf="isEditingCell(i, 'version')"
+                                    formControlName="version" type="text" (blur)="onInputBlur()" />
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </ng-container>
+</div>

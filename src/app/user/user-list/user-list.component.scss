@@ -1,0 +1,41 @@
+.user-list-container {
+  padding: 1rem;
+  max-width: 80%;
+  margin: 0 auto;
+  &__header {
+    text-align: center;
+  }
+  .user-list-table-container {
+    .cell-input {
+      width: 98%;
+      padding: 8px;
+      font: inherit;
+      &:focus {
+        background: #fffbe6; /* subtle highlight */
+        border: 1px solid #ccc;
+        border-radius: 2px;
+      }
+    }
+    thead {
+      th {
+        text-transform: uppercase;
+      }
+    }
+    .label {
+      padding: 8px;
+    }
+    th,
+    td {
+      padding: 0.5rem;
+      text-align: center;
+    }
+
+    td {
+      cursor: pointer;
+    }
+  }
+  .id-cell {
+    font-weight: bold;
+    color: #0077cc;
+  }
+}
