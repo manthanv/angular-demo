@@ -15,7 +15,7 @@ import { AutoFocusDirective } from '../auto-focus.directive';
 @Component({
   selector: 'app-user-list',
   imports: [CommonModule, ReactiveFormsModule, FormsModule, AutoFocusDirective],
-  providers: [UserService, Router],
+  providers: [UserService],
   standalone: true,
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.scss',
