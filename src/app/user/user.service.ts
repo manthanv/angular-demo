@@ -9,6 +9,6 @@ export class UserService {
   constructor(private httpClient: HttpClient) {}
 
   getUserList() {
-    return this.httpClient.get<User[]>('../64KB.json');
+    return this.httpClient.get<User[]>('https://microsoftedge.github.io/Demos/json-dummy-data/64KB.json');
   }
 }
